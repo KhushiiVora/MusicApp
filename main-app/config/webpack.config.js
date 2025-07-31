@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: "./src/index.js",
   output: {
     publicPath:
@@ -12,9 +12,12 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
-    alias: {
-      music_library: path.resolve(__dirname, "../../music-library/src"),
-    },
+    alias:
+      process.env.NODE_ENV === "production"
+        ? {}
+        : {
+            music_library: path.resolve(__dirname, "../../music-library/src"),
+          },
   },
   module: {
     rules: [
@@ -41,9 +44,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "main_app",
       remotes: {
-        // music_library: "music_library@http://localhost:3001/remoteEntry.js",
         music_library:
-          "music_library@https://music-library-kv.netlify.app/remoteEntry.js",
+          process.env.NODE_ENV === "production"
+            ? "music_library@https://music-library-kv.netlify.app/remoteEntry.js"
+            : "music_library@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: false },
