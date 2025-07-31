@@ -7,7 +7,8 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath:
+      process.env.NODE_ENV === "production" ? "auto" : "http://localhost:3000/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -40,7 +41,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "main_app",
       remotes: {
-        music_library: "music_library@http://localhost:3001/remoteEntry.js",
+        // music_library: "music_library@http://localhost:3001/remoteEntry.js",
+        music_library:
+          "music_library@https://music-library-kv.netlify.app/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: false },

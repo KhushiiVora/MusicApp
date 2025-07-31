@@ -7,7 +7,8 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath:
+      process.env.NODE_ENV === "production" ? "auto" : "http://localhost:3001/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
