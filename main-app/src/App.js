@@ -30,6 +30,7 @@ function App() {
     setRole("");
     setUsername("");
     setPassword("");
+    localStorage.removeItem("jwt");
   };
 
   const generateJWT = (role) => {

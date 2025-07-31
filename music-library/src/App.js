@@ -37,12 +37,15 @@ function App({ role = "user" }) {
   const [newSong, setNewSong] = useState({ title: "", artist: "", album: "" });
 
   const filteredAndSortedSongs = useMemo(() => {
-    let result = songs.filter(
-      (song) =>
-        song.title.toLowerCase().includes(filter.toLowerCase()) ||
-        song.artist.toLowerCase().includes(filter.toLowerCase()) ||
-        song.album.toLowerCase().includes(filter.toLowerCase())
-    );
+    let result =
+      filter.trim().length === 0
+        ? songs
+        : songs.filter(
+            (song) =>
+              song.title.toLowerCase().includes(filter.toLowerCase()) ||
+              song.artist.toLowerCase().includes(filter.toLowerCase()) ||
+              song.album.toLowerCase().includes(filter.toLowerCase())
+          );
 
     result = result.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
 
