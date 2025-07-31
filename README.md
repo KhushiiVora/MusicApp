@@ -11,52 +11,37 @@ A React-based music library application built with Module Federation, featuring 
   - User role: Can only view and filter songs
 - **Modern UI**: Responsive design with CSS styling
 
-## Project Structure
-
-```
-Music App/
-├── main-app/          # Main application (container)
-├── music-library/     # Music library micro frontend
-└── package.json       # Root package.json with dev scripts
-```
-
 ## Installation
 
 1. **Clone or download the project**
 
-2. **Install dependencies for both apps**:
+2. **Install dependencies for both apps**:<br/>
+   2.1 For main-app:
 
    ```bash
-   npm run install:all
+   npm install
    ```
-
-3. **Install root dependencies**:
-   ```bash
+   2.2 For music-library:
+    ```bash
    npm install
    ```
 
 ## Running the Application
 
-### Option 1: Run both apps simultaneously
-
-```bash
-npm run dev
-```
-
-### Option 2: Run apps separately
+### Run apps separately
 
 **Terminal 1 - Start Music Library**:
 
 ```bash
 cd music-library
-npm start
+npm run dev
 ```
 
 **Terminal 2 - Start Main App**:
 
 ```bash
 cd main-app
-npm start
+npm run dev
 ```
 
 ## Accessing the Application
@@ -101,35 +86,6 @@ npm start
 - **Architecture**: Micro Frontend with Module Federation
 - **Authentication**: In-memory JWT simulation
 
-## Development
-
-### Adding New Songs (Admin Only)
-
-1. Login as admin
-2. Fill in the song details (title, artist, album)
-3. Click "Add Song"
-
-### Filtering and Sorting
-
-- Use the search box to filter songs
-- Use the dropdown menus to sort or group songs
-
 ## Deployment
 
-Both apps can be deployed separately to platforms like:
-
-- Netlify
-- Vercel
-- GitHub Pages
-
-Remember to update the remote URL in the Main App's webpack config when deploying.
-
-## Troubleshooting
-
-1. **Module not found error**: Ensure both apps are running and the ports are correct
-2. **JSX syntax error**: Make sure all dependencies are installed
-3. **CORS issues**: Check that the remote URLs are correct in webpack config
-
-## License
-
-This project is for educational purposes.
+## Live Demo Links
