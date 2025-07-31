@@ -88,4 +88,21 @@ npm run dev
 
 ## Deployment
 
+### 1. Build Each App for Production
+
+From inside each app folder:
+
+```bash
+npx cross-env NODE_ENV=production webpack --config ./config/webpack.config.js
+```
+This generates a `dist/` folder for deployment.
+
+### 2. Deploy to Netlify
+- Deploy the `dist/` folder of music-library to Netlify first.
+- Copy the Netlify URL
+- Update `main-app/config/webpack.config.js` to use the remote
+- Rebuild the `main-app`, then deploy its `dist/` folder to Netlify as well.
+
 ## Live Demo Links
+- **Music App**: https://music-app-kv.netlify.app/
+- **Music Library**: https://music-library-kv.netlify.app/
